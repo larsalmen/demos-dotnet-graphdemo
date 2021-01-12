@@ -9,8 +9,6 @@ namespace GraphDemo.Resolver
 {
     public class StaffResolver : IStaffResolver
     {
-
-
         private readonly IGraphRepository _repository;
         public StaffResolver(
             IGraphRepository repository
@@ -24,7 +22,7 @@ namespace GraphDemo.Resolver
             var completeQuery =
                 $"g.V()" +
                 $".hasLabel('staff')" +
-                $".{GraphRepository.StaffProjection}.fold()";
+                $".{PreparedGremlinProjections.StaffProjection}.fold()";
 
             var result = await _repository.SubmitGremlinQuery<List<Staff>>(completeQuery);
 
@@ -44,7 +42,7 @@ namespace GraphDemo.Resolver
                 $".out('workplace')" +
                 $".in('workplace')" +
                 $".has('id',neq(id))" +
-                $".{GraphRepository.StaffProjection}" +
+                $".{PreparedGremlinProjections.StaffProjection}" +
                 $".dedup()" +
                 $".fold()";
 
@@ -66,7 +64,7 @@ namespace GraphDemo.Resolver
                 $".where(outE('workplace')" +
                 $".inV()" +
                 $".has('city', city))" +
-                $".{GraphRepository.StaffProjection}" +
+                $".{PreparedGremlinProjections.StaffProjection}" +
                 $".fold()";
 
             var result = await _repository.SubmitGremlinQuery<List<Staff>>(completeQuery, traversalParameters);
@@ -88,7 +86,7 @@ namespace GraphDemo.Resolver
                 $".as('edge')" +
                 $".project('workplace', 'role')" +
                 $".by(select('edge')" +
-                    $".inV().{GraphRepository.AirportProjection})" +
+                    $".inV().{PreparedGremlinProjections.AirportProjection})" +
                 $".by(coalesce(select('edge')" +
                     $".values('role'), constant('')))" +
                 $".fold()";

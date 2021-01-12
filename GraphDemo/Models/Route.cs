@@ -1,5 +1,4 @@
-﻿
-namespace GraphDemo.Models
+﻿namespace GraphDemo.Models
 {
     public class Route
     {

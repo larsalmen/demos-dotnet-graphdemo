@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GraphDemo.Models
+﻿namespace GraphDemo.Models
 {
     public class Staff
     {

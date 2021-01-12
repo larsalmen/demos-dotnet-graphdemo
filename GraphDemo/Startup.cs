@@ -35,7 +35,6 @@ namespace GraphDemo
                 .AddGraphQL()
                 .AddSystemTextJson() // For .NET Core 3+
                 .AddGraphTypes();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

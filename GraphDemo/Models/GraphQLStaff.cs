@@ -26,8 +26,7 @@ namespace GraphDemo.Models
                    "Co-workers",
                    resolve: async resolveFieldContext => await staffResolver.GetCoWorkersAsync(resolveFieldContext));
 
-            // Future
-
+            // Future fun
             //FieldAsync<ListGraphType<GraphQLStaff>>(
             //       "Manages",
             //       "Minions",

@@ -27,7 +27,7 @@ namespace GraphDemo.Resolver
             var completeQuery =
                 $"g.V()" +
                 $".has('code', iataCode)" +
-                $".{GraphRepository.AirportProjection}";
+                $".{PreparedGremlinProjections.AirportProjection}";
 
             var result = await _repository.SubmitGremlinQuery<Airport>(completeQuery, traversalParameters);
 
@@ -39,7 +39,7 @@ namespace GraphDemo.Resolver
             var completeQuery =
                 $"g.V()" +
                 $".hasLabel('airport')" +
-                $".{GraphRepository.AirportProjection}" +
+                $".{PreparedGremlinProjections.AirportProjection}" +
                 $".fold()";
 
             var result = await _repository.SubmitGremlinQuery<List<Airport>>(completeQuery);
@@ -57,7 +57,7 @@ namespace GraphDemo.Resolver
             var completeQuery =
                 $"g.V()" +
                 $".has('code', code)" +
-                $".{GraphRepository.InboundRouteProjection}" +
+                $".{PreparedGremlinProjections.InboundRouteProjection}" +
                 $".fold()";
 
             var result = await _repository.SubmitGremlinQuery<List<Route>>(completeQuery, traversalParameters);
@@ -75,7 +75,7 @@ namespace GraphDemo.Resolver
             var completeQuery =
                 $"g.V()" +
                 $".has('code', code)" +
-                $".{GraphRepository.OutboundRouteProjection}" +
+                $".{PreparedGremlinProjections.OutboundRouteProjection}" +
                 $".fold()";
 
             var result = await _repository.SubmitGremlinQuery<List<Route>>(completeQuery, traversalParameters);
@@ -94,7 +94,7 @@ namespace GraphDemo.Resolver
             var completeQuery =
                 $"g.V([partitionKey, id])" +
                 $".in('workplace')" +
-                $".{GraphRepository.StaffProjection}" +
+                $".{PreparedGremlinProjections.StaffProjection}" +
                 $".dedup()" +
                 $".fold()";
 

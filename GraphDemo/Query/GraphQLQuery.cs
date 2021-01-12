@@ -12,7 +12,7 @@ namespace GraphDemo.Query
              IStaffResolver staffResolver
             )
         {
-            // Uppdelad i likhet med REST
+            // Singular and plural
             FieldAsync<ListGraphType<GraphQLAirport>>(
                    "Airports",
                    "List of all airports.",
@@ -29,7 +29,7 @@ namespace GraphDemo.Query
                        resolveFieldContext.GetArgument<string>("code"))
                    );
 
-            // Samma metod, med valbar parameter.
+            // With optional argument.
             FieldAsync<ListGraphType<GraphQLStaff>>(
                    "Staff",
                    "Staff. Filters on optional 'city' parameter.",
